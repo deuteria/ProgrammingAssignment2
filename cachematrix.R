@@ -1,7 +1,6 @@
-## Put comments here that give an overall description of what your
-## functions do
+##This function will create a list containing the first element stored in the matrix and create a second which is empty, but will store the inverse of the matrix.
 
-## Write a short comment describing this function
+
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -11,24 +10,23 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
   get <- function () x
-  setmean <- function(mean) m <<- mean
-  getmean <- function() m
+  setinv <- function(inv) m <<- inv
+  getinv <- function() m
   list(set = set,
        get = get,
-       setmean = setmean,
-       getmean = getmean)
+       setinv = setinv,
+       getinv = getinv)
 }
 
-## Write a short comment describing this function
-
+## The third element will contain the result of the second, and the forth will calculate the inverse of the matrix stored in third.    
 cacheSolve <- function(x, ...) {
-       m <- x$getmean()
+       m <- x$getminv()
        if(!is.null(m)){
           message("Getting cached data!")
          return(m)
 }
 data <- x$get()
-m <- mean(data, ...)
-x$setmean(m)
+m <- solve(data, ...)
+x$setinv(m)
 m
 }
